@@ -82,8 +82,10 @@
     document.getElementById('contact-form').addEventListener('submit', async function(event) {
       event.preventDefault();
       const formData = new FormData(event.target);
+      alert(formData.get('name'));
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwLNvQTL0J7uaOzHLqy0PAkkT6kZ9W05QPLU5cdEdxhBZVLoWnNGPZ23ZG4CnZCIqDMmA/exec', {
+      try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbwU_jst9CEcoJQjF-PGaKIh_WcaQ9w7PXRgNJC2e2_9HKdp01_KturVCd2geCFkg1znJg/exec', {
         method: 'POST',
         body: JSON.stringify({
           name: formData.get('name'),
@@ -101,10 +103,17 @@
       } else {
         alert('送信に失敗しました。再度お試しください。');
       }
+
+      } catch (error) {
+        alert('エラーが発生しました。インターネット接続を確認してください。');
+      }
     });
   </script>
 </body>
 </html>
 
-<!-- https://script.google.com/macros/s/AKfycbxHBzH47p3HHDmms-eeHI5gOUuxh1gazPSePD1vNZR5usf4u6oQ8F3f2RpjtnjdT65JDQ/exec
-https://script.google.com/macros/s/AKfycbwLNvQTL0J7uaOzHLqy0PAkkT6kZ9W05QPLU5cdEdxhBZVLoWnNGPZ23ZG4CnZCIqDMmA/exec -->
+<!-- アプリURL
+https://script.google.com/macros/s/AKfycbxHBzH47p3HHDmms-eeHI5gOUuxh1gazPSePD1vNZR5usf4u6oQ8F3f2RpjtnjdT65JDQ/exec
+https://script.google.com/macros/s/AKfycbwLNvQTL0J7uaOzHLqy0PAkkT6kZ9W05QPLU5cdEdxhBZVLoWnNGPZ23ZG4CnZCIqDMmA/exec
+https://script.google.com/macros/s/AKfycbwU_jst9CEcoJQjF-PGaKIh_WcaQ9w7PXRgNJC2e2_9HKdp01_KturVCd2geCFkg1znJg/exec
+END -->
